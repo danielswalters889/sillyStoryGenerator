@@ -19,21 +19,24 @@ function result() {
   var yItem = randomValueFromArray(insertY);
   var zItem = randomValueFromArray(insertZ);
 
-  newStory = newStory.replace( ':insertx:' , 'xItem' );
-  newStory = newStory.replace(':insertx:','xItem');
-  newStory = newStory.replace(':inserty:', 'yItem');
-  newStory = newStory.replace(':insertz:', 'zItem');
+  newStory = newStory.replace(':insertx:', xItem);
+  newStory = newStory.replace(':insertx:', xItem);
+  newStory = newStory.replace(':inserty:', yItem);
+  newStory = newStory.replace(':insertz:', zItem);
 
 
   if(customName.value !== '') {
     var name = customName.value;
 
+    newStory = newStory.replace('Bob', name);
   }
 
   if(document.getElementById("uk").checked) {
-    var weight = Math.round(300);
-    var temperature =  Math.round(94);
+    var weight = Math.round(300 * 0.071428571428571) + ' stones';
+    var temperature =  Math.round((94-32) * 0.5556) + ' centigrade';
 
+    newStory = newStory.replace('300 pounds', weight);
+    newStory = newStory.replace('94 fahrenheit', temperature);
   }
 
   story.textContent = newStory;
